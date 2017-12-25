@@ -1,0 +1,36 @@
+html{
+    height: 100%;
+}
+
+body{
+    background-image: url("https://puu.sh/yNLw7/3e643e484b.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.btn-group{
+    margin-top: 5%;
+    margin-left: 35%;
+}
+
+.btn{
+    font-size: 25px;
+    font-family: cursive;
+    background: #ababab;
+}
+
+.btn:hover{
+    background: black;
+    color: white;
+}
+
+#title{
+    margin-left: 30%;
+    font-family: cursive;
+    color: white;
+}
+#time{
+    margin-left: 35%;
+    font-family: cursive;
+    color: white;
+}
