@@ -1,24 +1,15 @@
-var counter = 0;
+var seconds = 0;
 var minute = 5;
 var countdown;
-$("#time").text(minute + ":" + "0" + counter);
+$("#time").text(minute + ":" + "00");
 
 $("#start").click(function(){
     countdown = setInterval(function(){
-        counter--;
-        if(counter > 0 && minute >= 0){
-            if(counter < 10){
-                $("#time").text(minute + ":" + "0" + counter);
-            }
-            else{
-                $("#time").text(minute + ":" + counter);
-            }
 
-        }
-        else{
-            counter = 60;
-            minute--;
-        }
+        console.log(seconds);
+        timer();
+        display();
+
     }, 1000);
 
     $(this).prop("disabled", true);
@@ -31,20 +22,15 @@ $("#pause").click(function(){
 
 
 $("#reset").click(function(){
-    counter = 0;
+    seconds = 0;
     minute = 5;
-    $("#time").text(minute + ":" + "0" + counter);
+    display();
     $("#minus").prop("disabled", false);
 });
 
 $("#add").click(function () {
     minute++;
-    if(counter < 10){
-        $("#time").text(minute + ":" + "0" + counter);
-    }
-    else{
-        $("#time").text(minute + ":" + counter);
-    }
+    display();
     $("#minus").prop("disabled", false);
 });
 
@@ -55,12 +41,28 @@ $("#minus").click(function () {
     }
     else if(minute > 1){
         minute--;
-        if(counter < 10){
-            $("#time").text(minute + ":" + "0" + counter);
-        }
-        else{
-            $("#time").text(minute + ":" + counter);
-        }
+        display();
     }
 
 });
+
+function timer() {
+    seconds--;
+
+    if(seconds<0){
+        minute--;
+        seconds = 59;
+    }
+}
+
+function display() {
+    if(seconds < 10){
+        $("#time").text(minute + ":" + "0" + seconds);
+    }
+    else if(seconds === 60){
+        $("#time").text(minute + ":" + "00");
+    }
+    else{
+        $("#time").text(minute + ":" + seconds);
+    }
+}
