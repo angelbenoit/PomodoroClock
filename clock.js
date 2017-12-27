@@ -7,7 +7,11 @@ $("#start").click(function(){
     countdown = setInterval(function(){
 
         console.log(seconds);
-        timer();
+        if(minute > -1){
+            timer();
+        }
+
+
         display();
 
     }, 1000);
@@ -48,11 +52,15 @@ $("#minus").click(function () {
 
 function timer() {
     seconds--;
-
-    if(seconds<0){
-        minute--;
-        seconds = 59;
+    if(minute === 0 && seconds === 0){
+        alert("Times Up");
+        clearInterval(countdown);
     }
+        if(seconds<0 && minute > -1) {
+            minute--;
+            seconds = 59;
+        }
+
 }
 
 function display() {
